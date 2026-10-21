@@ -146,3 +146,4 @@ a.ally:hover .ally-handle{text-decoration:underline;text-underline-offset:3px}
  .tabs{-webkit-mask-image:none;mask-image:none;overflow:visible;gap:0}
  .tab{flex:1 1 0;min-width:0;white-space:normal;text-align:center;line-height:1.2;padding:8px 4px;font-size:1rem}
 }
+.tag-ej{width:fit-content}.inst-card .tag-ej{display:block}
