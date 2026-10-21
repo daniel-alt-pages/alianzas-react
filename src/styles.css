@@ -155,3 +155,8 @@ a.ally:hover .ally-handle{text-decoration:underline;text-underline-offset:3px}
 .inst-row{transition:transform .32s var(--ease-io)}
 .track{box-shadow:0 1px 2px rgba(26,26,26,.06),0 18px 40px -18px color-mix(in srgb,var(--red-d) 30%,transparent)}
 @media(prefers-reduced-motion:reduce){.alianzas,.alianzas *,.alianzas *::before{transition:none!important}}
+.ig-row{display:flex;align-items:center;flex-wrap:wrap;gap:4px 10px;margin-top:4px}
+.ig-row .tag-ej{margin:0}
+.ig-link{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:8px 16px 8px 12px;margin-left:-12px;border-radius:999px;color:var(--red-d);font-family:var(--fh);font-weight:700;font-size:1rem;text-decoration:none;transition:color .2s ease,background-color .2s ease}
+.ig-link:hover{background:color-mix(in srgb,var(--red) 8%,transparent);text-decoration:underline;text-underline-offset:3px}
+@media(prefers-reduced-motion:reduce){.ig-link{transition:none}}
