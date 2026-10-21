@@ -299,3 +299,6 @@ button.ally:focus-visible{outline:3px solid var(--red);outline-offset:3px;box-sh
  .panel>.carousel{grid-area:car;align-self:start}
  .inst-wide{grid-area:inst;margin-top:clamp(24px,4vw,56px)}
 }
+/* v3: logo Secretaría ~+25% (≈60px móvil / ≈50px escritorio) */
+.ally-logo.ally-logo-lg img{width:min(100%,335px);max-width:100%;height:auto}
+@media(min-width:1024px){.ally-logo.ally-logo-lg img{width:min(100%,280px);max-width:100%;height:auto}}
