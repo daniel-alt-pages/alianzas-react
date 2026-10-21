@@ -102,3 +102,9 @@ a.ally:hover strong{text-decoration:underline}
  .wrap{padding-inline:0}
  h2{font-size:56px}.panel{gap:64px}.a-list{gap:48px}
 }
+/* Grupo de aliados (Alcaldía + Secretaría de Educación de Soacha) */
+.a-group{grid-column:1/-1;border:1px solid var(--line);border-radius:16px;padding:16px}
+.a-group-list{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px}
+.ally-logo{display:inline-flex}
+.ally-logo .a-logo{max-width:100%}
+@media (min-width:1024px){.a-group{padding:16px 24px}.a-group-list{flex-wrap:nowrap}}
