@@ -147,3 +147,11 @@ a.ally:hover .ally-handle{text-decoration:underline;text-underline-offset:3px}
  .tab{flex:1 1 0;min-width:0;white-space:normal;text-align:center;line-height:1.2;padding:8px 4px;font-size:1rem}
 }
 .tag-ej{width:fit-content}.inst-card .tag-ej{display:block}
+/* Tema por pestaña: Bogotá en azul */
+.alianzas[data-tema="azul"]{--red:#1D4ED8;--red-d:#1E3A8A;--pink:#EFF4FF;--pink-2:#C7D7FE;--line:#DCE4F5}
+.alianzas,.eyebrow,.eyebrow::before,h2 .accent,.tab,.ink,.label,.link,.ally,.ally-handle,.allies h4,.inst h4,.inst-view,.inst-card,.inst-prog,.inst-prog i,.dot::before,.nav,.bar,.tag,.tag-ej,.bajada,.track{transition-property:color,background-color,border-color,transform,opacity;transition-duration:.2s;transition-timing-function:ease}
+.ink{transition:transform .3s var(--ease-io),background-color .2s ease}
+.dot::before{transition:transform .24s var(--ease-out),background-color .2s ease}
+.inst-row{transition:transform .32s var(--ease-io)}
+.track{box-shadow:0 1px 2px rgba(26,26,26,.06),0 18px 40px -18px color-mix(in srgb,var(--red-d) 30%,transparent)}
+@media(prefers-reduced-motion:reduce){.alianzas,.alianzas *,.alianzas *::before{transition:none!important}}

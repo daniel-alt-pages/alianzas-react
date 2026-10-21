@@ -6,7 +6,7 @@ export default function App() {
   const [active, setActive] = useState<string>(tabInicial)
   return (
     <main>
-      <section id="alianzas" className="alianzas" aria-labelledby="alianzas-title">
+      <section id="alianzas" className="alianzas" aria-labelledby="alianzas-title" data-tema={active === 'bogota' ? 'azul' : 'rojo'}>
         <div className="wrap">
           <header className="head">
             <span className="eyebrow">En el territorio</span>
