@@ -309,3 +309,6 @@ button.ally:focus-visible{outline:3px solid var(--red);outline-offset:3px;box-sh
  .stage{grid-template-columns:44px minmax(0,506px) 44px}
  .carousel .bar,.carousel .photo-prog{max-width:506px}
 }
+/* Logo UD (horizontal ~3:1): algo más estrecho para equilibrar con la Secretaría */
+a.ally-only-logo .ally-logo.ally-logo-lg img{width:min(80%,268px)}
+@media(min-width:1024px){a.ally-only-logo .ally-logo.ally-logo-lg img{width:min(80%,224px)}}

@@ -42,6 +42,7 @@ export function AlliesBlock({ bloque }: { bloque: BloqueColaboradores }) {
       <ul>
         {bloque.items.map((c, k) => {
           if (c.modal) return <li key={k}><LogoModal c={c} /></li>
+          if (c.soloLogo && c.url && c.logo) return <li key={k}><a className="ally ally-only-logo" href={c.url} target="_blank" rel="noopener" aria-label={c.ariaLabel ?? c.nombre}><span className="ally-logo ally-logo-lg"><img src={c.logo.src} alt={c.logo.alt} width={c.logo.width} height={c.logo.height} loading="lazy" decoding="async" /></span></a></li>
           const body = <><Mark c={c} /><span className="ally-txt"><strong>{c.nombre}</strong>{c.rol && <span className="ally-rol">{c.rol}</span>}{c.logo?.isExample && <Badge />}{c.handle && <span className="ally-handle">@{c.handle} <span aria-hidden="true">↗</span></span>}</span></>
           return (
             <li key={k} className={c.isPlaceholder ? 'ph' : undefined}>
