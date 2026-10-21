@@ -26,7 +26,7 @@ export function StoryPanel({ h, active, eager }: { h: Historia; active: boolean;
           {h.enlace.isExample && <span className="tag-ej">Ejemplo</span>}
         </div>
       </div>
-      <ImageCarousel imagenes={h.imagenes} label={h.titulo} eager={eager} />
+      <ImageCarousel imagenes={h.imagenes} label={h.titulo} eager={eager} active={active} />
     </div>
   )
 }

@@ -160,3 +160,17 @@ a.ally:hover .ally-handle{text-decoration:underline;text-underline-offset:3px}
 .ig-link{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:8px 16px 8px 12px;margin-left:-12px;border-radius:999px;color:var(--red-d);font-family:var(--fh);font-weight:700;font-size:1rem;text-decoration:none;transition:color .2s ease,background-color .2s ease}
 .ig-link:hover{background:color-mix(in srgb,var(--red) 8%,transparent);text-decoration:underline;text-underline-offset:3px}
 @media(prefers-reduced-motion:reduce){.ig-link{transition:none}}
+/* Carrusel de fotos: autoplay + flechas laterales en escritorio */
+.stage{position:relative}
+.side{display:none}
+.photo-prog{margin-top:10px}
+.bar .play{flex:0 0 44px}
+@media(min-width:1024px){
+
+ .carousel{max-width:none;justify-self:stretch}
+ .stage{display:grid;grid-template-columns:44px minmax(0,440px) 44px;justify-content:center;align-items:center;gap:16px}
+ .side{display:grid;width:48px;height:48px;background:#fff;border:1px solid var(--line);box-shadow:0 4px 14px -6px rgba(26,26,26,.25);color:var(--ink)}
+ .side:hover,.side:focus-visible{color:var(--red-d);border-color:var(--red)}
+ .carousel .bar,.carousel .photo-prog{max-width:440px;margin-left:auto;margin-right:auto}
+ .bar .right .prev,.bar .right .next{display:none}
+}
