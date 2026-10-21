@@ -34,7 +34,7 @@ h2 .accent{display:block;color:var(--red)}
 /* panels stacked in one grid cell: stable height across tabs */
 .panels{display:grid}
 .panel{grid-area:1/1;display:grid;gap:clamp(24px,4vw,56px);align-items:start}
-.panel[hidden]{display:grid;visibility:hidden}
+.panel[hidden]{display:none}
 .panel{align-content:start}
 @media(max-width:879px){.panel .carousel{order:-1}}
 @media(min-width:880px){.panel{grid-template-columns:5fr 7fr}}
@@ -78,7 +78,9 @@ details ol{margin:0 0 12px;padding-left:1.4em}
 .nav:active{transform:scale(.94)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 @media(prefers-reduced-motion:reduce){
- *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+ .tab,.ink,.link,.link span,.nav,.nav svg,.dot::before,.ally,.ally::after,.inst-row,.tabs{transition:none!important;scroll-behavior:auto!important}
+ .panel.enter .copy>*,.panel.enter .carousel,.slide.is-active,.count.bump{animation:none!important}
+ .inst-prog{display:none}
  .slide,.slide.is-active{transition:opacity .15s linear!important}
  .panel.enter{animation:fade .15s linear!important}
  @keyframes fade{from{opacity:0}}
@@ -94,7 +96,7 @@ details ol{margin:0 0 12px;padding-left:1.4em}
 .inst{margin:0 0 20px}
 .inst h4{font-family:var(--fh);font-size:1rem;margin:0 0 10px}
 .inst-view{overflow:hidden;border-radius:14px;background:#fff;border:1px solid var(--line);contain:paint}
-.inst-row{display:flex;transition:transform .45s var(--ease-io)}
+.inst-row{display:flex;transition:transform .32s var(--ease-io)}
 .inst-card{flex:0 0 100%;min-width:0;padding:16px 18px;border-left:4px solid var(--red)}
 .inst-card strong{display:block;font-family:var(--fh);font-weight:700;font-size:1.0625rem;line-height:1.3}
 .inst-card span{display:block;color:var(--muted);font-size:1rem}
@@ -116,12 +118,12 @@ details ol{margin:0 0 12px;padding-left:1.4em}
 .allies h4{font-family:var(--fh);font-size:.8125rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--red-d);margin:0 0 10px}
 .allies ul{list-style:none;padding:0;margin:0;display:grid;gap:8px;grid-template-columns:minmax(0,1fr)}
 @media(min-width:560px) and (max-width:879px){.allies ul{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.ally{display:flex;align-items:center;gap:12px;min-height:64px;height:100%;padding:10px 14px 10px 10px;background:#fff;border:1px solid var(--line);border-radius:14px;color:var(--ink);text-decoration:none;transition:transform .18s var(--ease-out),border-color .18s,box-shadow .18s}
-a.ally:hover{transform:translateY(-2px);border-color:var(--pink-2);box-shadow:0 8px 20px -14px rgba(163,0,0,.45)}
+.ally{display:flex;align-items:center;gap:12px;min-height:64px;height:100%;padding:10px 14px 10px 10px;background:#fff;border:1px solid var(--line);border-radius:14px;color:var(--ink);text-decoration:none;transition:transform .18s var(--ease-out),border-color .18s}
+a.ally{position:relative}a.ally::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:0 8px 20px -14px rgba(163,0,0,.45);opacity:0;transition:opacity .18s var(--ease-out);pointer-events:none}
+a.ally:hover{transform:translateY(-2px);border-color:var(--pink-2)}a.ally:hover::after{opacity:1}
 a.ally:active{transform:scale(.99)}
 .ally-logo{flex:0 0 72px;width:72px;height:48px;display:grid;place-items:center;border-radius:10px;background:#fff}
 .ally-logo img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
-.ally-logo-ph{border:1.5px dashed #b9a3a3;color:#6b6b6b;font-size:.6875rem;font-weight:700;line-height:1.15;text-align:center;text-transform:uppercase;letter-spacing:.04em;background:var(--pink)}
 .ally-txt{display:flex;flex-direction:column;min-width:0}
 .ally-txt strong{font-weight:600;font-size:1rem;line-height:1.3}
 .ally-rol{color:var(--muted);font-size:.9375rem}
@@ -131,3 +133,16 @@ a.ally:hover .ally-handle{text-decoration:underline;text-underline-offset:3px}
 .carousel{max-width:min(100%,480px);justify-self:center;width:100%}@media(min-width:880px){.carousel{max-width:520px}}
 .inst h4{font-size:.8125rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--red-d)}
 .copy h3+p{margin-bottom:24px}
+
+/* Etiqueta de ejemplo */
+.tag-ej{display:inline-block;align-self:flex-start;margin-top:4px;font-size:1rem;line-height:1.3;font-weight:700;color:var(--red-d);background:#fff;border:1px dashed var(--red-d);border-radius:999px;padding:1px 10px}
+.bajada{font-family:var(--fh);font-weight:700;color:var(--red-d);margin:-4px 0 12px!important;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.bajada .tag-ej{margin:0}
+.tag-ej-link{margin-left:10px;vertical-align:middle}
+/* Tamaños mínimos 16px */
+.eyebrow,.label,.tag,.allies h4,.inst h4,.ally-rol,.ally-handle,.count,.stat-lbl,.slide figcaption{font-size:1rem}
+/* Pestañas como control segmentado en móvil */
+@media(max-width:480px){
+ .tabs{-webkit-mask-image:none;mask-image:none;overflow:visible;gap:0}
+ .tab{flex:1 1 0;min-width:0;white-space:normal;text-align:center;line-height:1.2;padding:8px 4px;font-size:1rem}
+}
