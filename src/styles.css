@@ -243,3 +243,20 @@ html,body,#root,main,.alianzas,.panels,.panel,.tabs,.bar,.inst-view{background-c
 .inst-pause:focus-visible::before{outline:3px solid var(--red);outline-offset:2px}
 .inst[data-paused] .marquee .inst-row{animation-play-state:paused!important}
 @media(prefers-reduced-motion:reduce){.inst-pause{display:none}}
+/* Aliado solo-logo con diálogo */
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+button.ally{width:100%;font:inherit;cursor:pointer;justify-content:center;transition:transform .18s var(--ease-out),box-shadow .18s,border-color .18s}
+button.ally:hover{transform:scale(1.02);border-color:var(--pink-2);box-shadow:0 8px 20px -12px rgba(26,26,26,.25)}
+button.ally:focus-visible{outline:3px solid var(--red);outline-offset:3px;box-shadow:0 8px 20px -12px rgba(26,26,26,.25)}
+.ally-logo-lg{flex:0 1 220px;width:220px;height:48px}
+.ally-dialog{border:0;border-radius:var(--r);padding:0;max-width:min(92vw,440px);width:100%;color:var(--ink);font-size:1rem;box-shadow:0 24px 60px -20px rgba(0,0,0,.35);opacity:0;transform:scale(.96);transition:opacity .2s var(--ease-out),transform .2s var(--ease-out),overlay .2s allow-discrete,display .2s allow-discrete}
+.ally-dialog[open]{opacity:1;transform:scale(1)}
+@starting-style{.ally-dialog[open]{opacity:0;transform:scale(.96)}}
+.ally-dialog::backdrop{background:rgba(26,26,26,.5)}
+.ally-dialog-in{position:relative;padding:28px 24px 24px}
+.ally-dialog h3{font-family:var(--fh);font-size:1.25rem;line-height:1.3;margin:0 44px 18px 0}
+.ally-dialog-links{display:flex;flex-direction:column;gap:12px}
+.ally-dialog-links .link{justify-content:center;min-height:48px;font-size:1rem;text-align:center}
+.ally-dialog-x{position:absolute;top:10px;right:10px;width:44px;height:44px;border:0;border-radius:999px;background:transparent;color:var(--ink);font-size:1.125rem;cursor:pointer}
+.ally-dialog-x:hover{background:#f3f3f3}
+@media (prefers-reduced-motion:reduce){.ally-dialog,button.ally{transition:none!important}button.ally:hover{transform:none}}

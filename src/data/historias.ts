@@ -5,6 +5,8 @@ const real = (src: string, alt: string): Imagen => ({ src, alt, isExample: false
 export interface Logo { src: string; alt: string; width: number; height: number; fuente: string; isExample?: boolean }
 export interface Colaborador {
   nombre: string; rol?: string; handle?: string; url?: string; isPlaceholder?: boolean
+  soloLogo?: boolean     // muestra solo el logo (sin texto visible)
+  modal?: { titulo: string; enlaces: { texto: string; href: string }[] }  // el logo abre un diálogo con enlaces
   logo?: Logo            // logo oficial, o de ejemplo con isExample: true
 }
 export interface BloqueColaboradores { titulo: string; items: Colaborador[] }
@@ -62,8 +64,7 @@ export const historias: Historia[] = [
       titulo: 'Aliados que lo hicieron posible',
       items: [
         { nombre: 'Universidad Distrital Francisco José de Caldas', logo: { src: 'aliados/universidad-distrital.webp', alt: 'Escudo de la Universidad Distrital Francisco José de Caldas', width: 320, height: 310, fuente: 'https://commons.wikimedia.org/wiki/File:Escudo_UD.svg' }, handle: 'udistrital_oficial', url: 'https://www.instagram.com/udistrital_oficial/' },
-        { nombre: 'Secretaría de Educación de Soacha', logo: { src: 'aliados/secretaria-educacion-soacha.webp', alt: 'Logo de la Alcaldía de Soacha, Secretaría de Educación', width: 480, height: 86, fuente: 'https://www.soachaeducativa.edu.co/wp-content/uploads/2023/02/logo-sem-horizontall_full-color.png (copia en web.archive.org, 2025-10-23)' }, handle: 'semsoacha', url: 'https://www.instagram.com/semsoacha/' },
-        { nombre: 'Alcaldía de Soacha', logo: { src: 'aliados/alcaldia-soacha.webp', alt: 'Logo de la Alcaldía de Soacha', width: 480, height: 170, fuente: 'https://www.alcaldiasoacha.gov.co/SiteAssets/V1/assets/ESCUDO-10.png' }, handle: 'alcaldia_soacha', url: 'https://www.instagram.com/alcaldia_soacha/' },
+        { nombre: 'Secretaría de Educación de Soacha', logo: { src: 'aliados/secretaria-educacion-soacha.webp', alt: 'Logo de la Alcaldía de Soacha, Secretaría de Educación', width: 480, height: 86, fuente: 'https://www.soachaeducativa.edu.co/wp-content/uploads/2023/02/logo-sem-horizontall_full-color.png (copia en web.archive.org, 2025-10-23)' }, soloLogo: true, modal: { titulo: 'Secretaría de Educación y Alcaldía de Soacha', enlaces: [{ texto: 'Ir a Secretaría de Educación Soacha', href: 'https://www.soachaeducativa.edu.co/' }, { texto: 'Ir a Alcaldía', href: 'https://www.alcaldiasoacha.gov.co/' }] } },
         { nombre: 'PreICFES Gratuito Jóvenes Bogotá', logo: { src: 'ejemplos/preicfes-jovenes-bogota.svg', alt: 'PreICFES Gratuito Jóvenes Bogotá (logo de ejemplo)', width: 160, height: 160, fuente: 'EJEMPLO: reemplazar por el logo oficial', isExample: true }, handle: 'preicfesjovenesbogota', url: 'https://www.instagram.com/preicfesjovenesbogota/' },
       ],
     },
