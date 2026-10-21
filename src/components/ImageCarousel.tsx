@@ -6,7 +6,7 @@ const Chev = ({ d }: { d: string }) => <svg width="18" height="18" viewBox="0 0 
 const PREV = 'm15 6-6 6 6 6', NEXT = 'm9 6 6 6-6 6'
 interface Props { imagenes: Imagen[]; label: string; eager: boolean; active: boolean }
 export function ImageCarousel({ imagenes, label, eager, active }: Props) {
-  const n = imagenes.length, [i, setI] = useState(0), [dir, setDir] = useState(0), [live, setLive] = useState(''), [bump, setBump] = useState(0)
+  const n = imagenes.length, [i, setI] = useState(0), [dir, setDir] = useState(0), [live, setLive] = useState('')
   const reduce = useReducedMotion(), x0 = useRef<number | null>(null)
   const [userPaused, setUserPaused] = useState(false), [hover, setHover] = useState(false), [focus, setFocus] = useState(false)
   const [docHidden, setDocHidden] = useState(() => typeof document !== 'undefined' && document.hidden)
@@ -14,12 +14,12 @@ export function ImageCarousel({ imagenes, label, eager, active }: Props) {
   const auto = !reduce && n > 1, running = auto && active && !userPaused && !hover && !focus && !docHidden
   const show = (k: number, d: number, manual: boolean) => {
     const j = (k + n) % n; if (j === i) return
-    setDir(reduce ? 0 : d); setI(j); setBump(b => b + 1); setLive(manual ? `Imagen ${j + 1} de ${n}` : '')
+    setDir(reduce ? 0 : d); setI(j); setLive(manual ? `Foto ${j + 1} de ${n}` : '')
   }
   const go = (k: number, d: number) => show(k, d, true)
   useEffect(() => { if (!running) return; const t = setTimeout(() => show(i + 1, 1, false), DUR); return () => clearTimeout(t) })
   const onKey = (e: KeyboardEvent) => { if (e.key === 'ArrowLeft') { go(i - 1, -1); e.preventDefault() } if (e.key === 'ArrowRight') { go(i + 1, 1); e.preventDefault() } }
-  const prevLbl = `Imagen anterior (${(i - 1 + n) % n + 1} de ${n})`, nextLbl = `Imagen siguiente (${(i + 1) % n + 1} de ${n})`
+  const prevLbl = 'Foto anterior', nextLbl = 'Foto siguiente'
   return (
     <div className="carousel" role="region" aria-roledescription="carrusel" aria-label={`Imágenes: ${label}`} onKeyDown={onKey}
       onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}
@@ -40,22 +40,13 @@ export function ImageCarousel({ imagenes, label, eager, active }: Props) {
         </div>
         <button className="nav side side-next" aria-label={nextLbl} onClick={() => go(i + 1, 1)}><Chev d={NEXT} /></button>
       </div>
-      {auto && <div className="inst-prog photo-prog" aria-hidden="true"><i key={`${i}-${running}`} className={`run${running ? '' : ' paused'}`} style={{ ['--dur' as string]: `${DUR}ms` }} /></div>}
       <p className="sr" aria-live="polite" aria-atomic="true">{live}</p>
-      <div className="bar">
-        <div className="dots">
-          {auto && <button className="nav play" aria-label={userPaused ? 'Reproducir el carrusel de imágenes' : 'Pausar el carrusel de imágenes'} onClick={() => setUserPaused(p => !p)}>
-            {userPaused ? <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5v14l12-7z" /></svg>
-              : <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z" /></svg>}
-          </button>}
-          {imagenes.map((_, j) => <button key={j} className="dot" aria-label={`Ir a la imagen ${j + 1}`} aria-current={j === i || undefined} onClick={() => go(j, j > i ? 1 : -1)} />)}
-        </div>
-        <div className="right">
-          <button className="nav prev" aria-label={prevLbl} onClick={() => go(i - 1, -1)}><Chev d={PREV} /></button>
-          <span key={bump} className={`count${bump ? ' bump' : ''}`} aria-hidden="true">{i + 1} / {n}</span>
-          <button className="nav next" aria-label={nextLbl} onClick={() => go(i + 1, 1)}><Chev d={NEXT} /></button>
-        </div>
-      </div>
+      {auto && <div className="photo-ctl"><button className="nav play" aria-label={userPaused ? 'Reproducir el carrusel de imágenes' : 'Pausar el carrusel de imágenes'} onClick={() => setUserPaused(p => !p)}>
+        {userPaused ? <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5v14l12-7z" /></svg>
+          : <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z" /></svg>}
+      </button>
+      <button className="nav prev mob" aria-label={prevLbl} onClick={() => go(i - 1, -1)}><Chev d={PREV} /></button>
+      <button className="nav next mob" aria-label={nextLbl} onClick={() => go(i + 1, 1)}><Chev d={NEXT} /></button></div>}
     </div>
   )
 }

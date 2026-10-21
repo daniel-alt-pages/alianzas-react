@@ -197,3 +197,23 @@ a.ally:hover .ally-handle{text-decoration:underline;text-underline-offset:3px}
 .inst-logo{height:88px}@media(min-width:390px){.inst-logo{height:96px}}@media(min-width:768px){.inst-logo{height:104px}}@media(min-width:1200px){.inst-logo{height:120px}}
 .inst-card.logo-only{padding:16px 12px;justify-content:center}
 html,body,#root,main,.alianzas,.panels,.panel,.tabs,.bar,.inst-view{background-color:#FFFFFF}
+
+/* Carrusel de fotos sin indicadores */
+.photo-ctl{display:flex;justify-content:center;gap:6px;margin-top:10px}
+@media(min-width:1024px){.photo-ctl .mob{display:none}}
+/* Cinta continua de instituciones */
+.marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent)}
+.marquee .inst-row{list-style:none;margin:0;padding:4px 0;display:flex;gap:var(--gap);width:max-content;transform:none;transition:none;animation:marquee var(--dur) linear infinite;animation-play-state:paused}
+.inst[data-active] .marquee .inst-row{animation-play-state:running}
+.inst[data-active] .marquee:hover .inst-row,.inst[data-active] .marquee:focus-within .inst-row{animation-play-state:paused}
+.marquee .inst-row>li{margin:0}
+@keyframes marquee{to{transform:translateX(calc(-50% - var(--gap) / 2))}}
+.inst-card{position:relative;overflow:hidden}
+.inst-card::after{content:"";position:absolute;inset:-20% auto -20% -60%;width:40%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.55),transparent);transform:translateX(0) skewX(-12deg);animation:shine 3.6s ease-in-out infinite;animation-delay:calc(var(--k) * .6s);pointer-events:none}
+@keyframes shine{0%,60%{transform:translateX(0) skewX(-12deg)}100%{transform:translateX(420%) skewX(-12deg)}}
+@media(prefers-reduced-motion:reduce){
+ .marquee{overflow-x:auto;-webkit-mask-image:none;mask-image:none}
+ .marquee .inst-row{animation:none!important}
+ .marquee .inst-row>li[aria-hidden]{display:none}
+ .inst-card::after{display:none}
+}
