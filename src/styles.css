@@ -310,5 +310,10 @@ button.ally:focus-visible{outline:3px solid var(--red);outline-offset:3px;box-sh
  .carousel .bar,.carousel .photo-prog{max-width:506px}
 }
 /* Logo UD (horizontal ~3:1): algo más estrecho para equilibrar con la Secretaría */
-a.ally-only-logo .ally-logo.ally-logo-lg img{width:min(80%,268px)}
-@media(min-width:1024px){a.ally-only-logo .ally-logo.ally-logo-lg img{width:min(80%,224px)}}
+a.ally-only-logo{justify-content:center}
+a.ally-only-logo .ally-logo.ally-logo-lg{width:100%;justify-content:center;display:flex}
+a.ally-only-logo .ally-logo.ally-logo-lg img{width:92%;max-width:335px;height:auto;margin:0 auto}
+@media(min-width:1024px){a.ally-only-logo .ally-logo.ally-logo-lg img{width:92%;max-width:300px}}
+.ally-logo img[src$="preicfes-jovenes-bogota.webp"]{height:64px;width:64px}
+@media(min-width:1024px){.ally-logo img[src$="preicfes-jovenes-bogota.webp"]{height:76px;width:76px}}
+a.ally-only-logo{padding-left:12px;padding-right:12px}
