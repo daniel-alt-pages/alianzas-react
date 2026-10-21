@@ -1,7 +1,7 @@
 import type { BloqueColaboradores, Colaborador } from '../data/historias'
 function Mark({ c }: { c: Colaborador }) {
   if (!c.logo) return null
-  return <span className="ally-logo" data-example={c.logo.isExample || undefined}><img src={c.logo.src} alt={c.logo.alt} width={c.logo.width} height={c.logo.height} loading="lazy" decoding="async" /></span>
+  return <span className="ally-logo" data-wide={c.logo.width / c.logo.height > 2.5 || undefined} data-example={c.logo.isExample || undefined}><img src={c.logo.src} alt={c.logo.alt} width={c.logo.width} height={c.logo.height} loading="lazy" decoding="async" /></span>
 }
 export function AlliesBlock({ bloque }: { bloque: BloqueColaboradores }) {
   return (

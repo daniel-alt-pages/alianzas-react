@@ -217,3 +217,10 @@ html,body,#root,main,.alianzas,.panels,.panel,.tabs,.bar,.inst-view{background-c
  .marquee .inst-row>li[aria-hidden]{display:none}
  .inst-card::after{display:none}
 }
+
+/* Logos de aliados más grandes (por altura) */
+.ally-logo{flex:0 0 auto;width:auto;min-width:0;max-width:none;height:auto;padding:0;background:none}
+.ally-logo img{height:48px;width:auto;max-width:min(100%,200px);object-fit:contain}
+.ally-logo[data-wide] img{height:40px;max-width:min(100%,240px)}
+@media(max-width:559px){.ally{flex-direction:column;align-items:flex-start;gap:8px;padding:12px 14px}}
+@media(min-width:1024px){.ally-logo img{height:68px;max-width:160px}.ally-logo[data-wide] img{height:52px;max-width:200px}}
