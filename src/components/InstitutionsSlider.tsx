@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import type { Institucion } from '../data/historias'
 import { useReducedMotion } from './useReducedMotion'
-const DUR = 2500
+const DUR = 3000
 const Chev = ({ d }: { d: string }) => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden="true"><path d={d} /></svg>
 interface Props { titulo: string; items: Institucion[]; isPlaceholder: boolean; active: boolean }
 export function InstitutionsSlider({ titulo, items, isPlaceholder, active }: Props) {
