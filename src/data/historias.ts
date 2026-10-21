@@ -32,7 +32,7 @@ export interface Historia {
 
 export const historias: Historia[] = [
   {
-    id: 'bogota', tab: 'Jóvenes Bogotá', label: 'BOGOTÁ',
+    id: 'bogota', tab: 'Jóvenes Bogotá',
     titulo: 'PreICFES Gratuito Jóvenes Bogotá',
     // EJEMPLO: sin cifra verificada; línea descriptiva no numérica
     bajada: { texto: 'Una cohorte, todo un calendario, una misma meta', isExample: true },
@@ -55,7 +55,7 @@ export const historias: Historia[] = [
     ],
   },
   {
-    id: 'soacha', tab: 'Soacha', label: 'SOACHA',
+    id: 'soacha', tab: 'Soacha',
     titulo: '716 estudiantes, 9 colegios, una misma meta',
     resumen: 'Llevamos el simulacro Saber 11 a 716 estudiantes de grado once en 9 instituciones oficiales de Soacha.',
     colaboradores: {
