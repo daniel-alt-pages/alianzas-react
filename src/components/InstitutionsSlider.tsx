@@ -21,7 +21,7 @@ export function InstitutionsSlider({ titulo, items, isPlaceholder, active }: Pro
           {items.map((s, j) => <div key={s.nombre} className="inst-card" style={{ visibility: Math.abs(j - i) > 1 ? 'hidden' : undefined }}>{s.logo && <img src={s.logo} alt="" width={56} height={56} loading="lazy" decoding="async" />}<div><strong>{s.nombre}</strong>{s.municipio && <span>{s.municipio}</span>}{(s.isExample || s.logoIsExample) && <span className="tag-ej">{s.isExample ? 'Ejemplo' : 'Logo de ejemplo'}</span>}</div></div>)}
         </div>
       </div>
-      {auto && <div className="inst-prog" aria-hidden="true"><i key={`${i}-${active}`} className={`run${running ? '' : ' paused'}`} style={{ ['--dur' as string]: `${DUR}ms` }} /></div>}
+      {auto && <div className="inst-prog" aria-hidden="true"><i key={`${i}-${active}-${running}`} className={`run${running ? '' : ' paused'}`} style={{ ['--dur' as string]: `${DUR}ms` }} /></div>}
       <div className="inst-bar">
         {auto ? <button className="nav" aria-label={userPaused ? 'Reanudar el carrusel de instituciones' : 'Pausar el carrusel de instituciones'} aria-pressed={userPaused} onClick={() => setUserPaused(p => !p)}>
           {userPaused ? <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5v14l12-7z" /></svg>
