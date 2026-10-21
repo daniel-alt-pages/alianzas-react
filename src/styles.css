@@ -302,3 +302,10 @@ button.ally:focus-visible{outline:3px solid var(--red);outline-offset:3px;box-sh
 /* v3: logo Secretaría ~+25% (≈60px móvil / ≈50px escritorio) */
 .ally-logo.ally-logo-lg img{width:min(100%,335px);max-width:100%;height:auto}
 @media(min-width:1024px){.ally-logo.ally-logo-lg img{width:min(100%,280px);max-width:100%;height:auto}}
+/* v2: contenedor del carrusel ~+15% (sin zoom en imágenes) */
+.carousel{max-width:min(100%,552px)}
+@media(min-width:1024px){
+ .carousel{max-width:none}
+ .stage{grid-template-columns:44px minmax(0,506px) 44px}
+ .carousel .bar,.carousel .photo-prog{max-width:506px}
+}
