@@ -174,3 +174,8 @@ a.ally:hover .ally-handle{text-decoration:underline;text-underline-offset:3px}
  .carousel .bar,.carousel .photo-prog{max-width:440px;margin-left:auto;margin-right:auto}
  .bar .right .prev,.bar .right .next{display:none}
 }
+/* Logos de instituciones más grandes */
+.inst-card{gap:16px;padding:14px 16px}
+.inst-card img{flex:0 0 104px;width:104px;height:104px;object-fit:contain;border-radius:14px;background:#fff}
+@media(min-width:1024px){.inst-card img{flex-basis:144px;width:144px;height:144px}}
+@media(max-width:359px){.inst-card img{flex-basis:96px;width:96px;height:96px}}

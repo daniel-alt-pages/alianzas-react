@@ -18,7 +18,7 @@ export function InstitutionsSlider({ titulo, items, isPlaceholder, active }: Pro
       <ul className="sr">{items.map(s => <li key={s.nombre}>{s.nombre}{s.municipio ? `, ${s.municipio}` : ''}</li>)}</ul>
       <div className="inst-view" aria-hidden="true">
         <div className="inst-row" style={{ transform: `translateX(${-i * 100}%)` }}>
-          {items.map((s, j) => <div key={s.nombre} className="inst-card" style={{ visibility: Math.abs(j - i) > 1 ? 'hidden' : undefined }}>{s.logo && <img src={s.logo} alt="" width={56} height={56} loading="lazy" decoding="async" />}<div><strong>{s.nombre}</strong>{s.municipio && <span>{s.municipio}</span>}{(s.isExample || s.logoIsExample) && <span className="tag-ej">{s.isExample ? 'Ejemplo' : 'Logo de ejemplo'}</span>}</div></div>)}
+          {items.map((s, j) => <div key={s.nombre} className="inst-card" style={{ visibility: Math.abs(j - i) > 1 ? 'hidden' : undefined }}>{s.logo && <img src={s.logo} alt="" width={144} height={144} loading="lazy" decoding="async" />}<div><strong>{s.nombre}</strong>{s.municipio && <span>{s.municipio}</span>}{(s.isExample || s.logoIsExample) && <span className="tag-ej">{s.isExample ? 'Ejemplo' : 'Logo de ejemplo'}</span>}</div></div>)}
         </div>
       </div>
       {auto && <div className="inst-prog" aria-hidden="true"><i key={`${i}-${active}-${running}`} className={`run${running ? '' : ' paused'}`} style={{ ['--dur' as string]: `${DUR}ms` }} /></div>}
