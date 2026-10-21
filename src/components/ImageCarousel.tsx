@@ -44,7 +44,7 @@ export function ImageCarousel({ imagenes, label, eager, active }: Props) {
       <p className="sr" aria-live="polite" aria-atomic="true">{live}</p>
       <div className="bar">
         <div className="dots">
-          {auto && <button className="nav play" aria-label={userPaused ? 'Reanudar el carrusel de imágenes' : 'Pausar el carrusel de imágenes'} aria-pressed={userPaused} onClick={() => setUserPaused(p => !p)}>
+          {auto && <button className="nav play" aria-label={userPaused ? 'Reproducir el carrusel de imágenes' : 'Pausar el carrusel de imágenes'} onClick={() => setUserPaused(p => !p)}>
             {userPaused ? <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5v14l12-7z" /></svg>
               : <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z" /></svg>}
           </button>}

@@ -16,7 +16,6 @@ export function StoryPanel({ h, active, eager }: { h: Historia; active: boolean;
         <p>{h.resumen}</p>
         {h.colaboradores && <AlliesBlock bloque={h.colaboradores} />}
         {h.nota && <p className="note">{h.nota}</p>}
-        {h.instituciones && <InstitutionsSlider {...h.instituciones} active={active} />}
         <div className="ig-row">
           <a className="ig-link" href={h.enlace.href} target="_blank" rel="noopener" data-example={h.enlace.isExample || undefined}
             aria-label={`Ver en Instagram: ${h.enlace.texto === 'Ver en Instagram' ? `publicación «${h.titulo}»` : h.enlace.texto} (se abre en una pestaña nueva)`}>
@@ -27,6 +26,7 @@ export function StoryPanel({ h, active, eager }: { h: Historia; active: boolean;
         </div>
       </div>
       <ImageCarousel imagenes={h.imagenes} label={h.titulo} eager={eager} active={active} />
+      {h.instituciones && <div className="inst-wide"><InstitutionsSlider {...h.instituciones} active={active} /></div>}
     </div>
   )
 }
