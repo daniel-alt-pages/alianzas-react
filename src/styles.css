@@ -285,3 +285,17 @@ button.ally:focus-visible{outline:3px solid var(--red);outline-offset:3px;box-sh
  .inst-flip[data-flipped] .inst-back{opacity:1}
  .inst-flip[data-flipped] .inst-front{opacity:0}
 }
+/* v3: último aliado solo en su fila ocupa todo el ancho, centrado */
+@media(min-width:560px) and (max-width:879px){
+ .allies li:last-child:nth-child(odd){grid-column:1/-1}
+ .allies li:last-child:nth-child(odd) .ally{justify-content:center}
+ .allies li:last-child:nth-child(odd) .ally-txt{flex:0 1 auto}
+}
+/* Orden: móvil texto→fotos→aliados→instituciones; escritorio con áreas */
+.copy-intro>p:last-child{margin-bottom:0}
+@media(min-width:880px){
+ .panel{grid-template-columns:4fr 8fr;grid-template-rows:auto 1fr auto;grid-template-areas:"intro car" "allies car" "inst inst";row-gap:0}
+ .copy-intro{grid-area:intro}.copy-allies{grid-area:allies;padding-top:24px}
+ .panel>.carousel{grid-area:car;align-self:start}
+ .inst-wide{grid-area:inst;margin-top:clamp(24px,4vw,56px)}
+}

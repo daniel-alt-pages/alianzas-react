@@ -1,26 +1,25 @@
 import { Badge } from './Badge'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import type { Historia } from '../data/historias'
 import { AlliesBlock } from './AlliesBlock'
 import { InstitutionsSlider } from './InstitutionsSlider'
 import { ImageCarousel } from './ImageCarousel'
 export function StoryPanel({ h, active, eager }: { h: Historia; active: boolean; eager: boolean }) {
   const ref = useRef<HTMLDivElement>(null), first = useRef(true)
-  // En móvil la foto va arriba: se renderiza primero para que el orden de tabulación siga el visual
-  const q = '(max-width: 879px)'
-  const [narrow, setNarrow] = useState(() => typeof matchMedia !== 'undefined' && matchMedia(q).matches)
-  useEffect(() => { const m = matchMedia(q); const f = (e: MediaQueryListEvent) => setNarrow(e.matches); m.addEventListener('change', f); return () => m.removeEventListener('change', f) }, [])
   useEffect(() => { const p = ref.current; if (!p || !active) return; if (first.current) { first.current = false; return } p.classList.remove('enter'); void p.offsetWidth; p.classList.add('enter') }, [active])
+  // Orden del DOM = orden visual en móvil (texto, fotos, aliados, instituciones); en escritorio se reubica con grid-template-areas
   const carousel = <ImageCarousel imagenes={h.imagenes} label={h.titulo} eager={eager} active={active} />
   return (
     <div ref={ref} className="panel" role="tabpanel" id={`panel-${h.id}`} aria-labelledby={`tab-${h.id}`} tabIndex={0} hidden={!active}>
-      {narrow && carousel}
-      <div className="copy">
+      <div className="copy copy-intro">
         {h.isExample && <span className="tag">Texto de ejemplo</span>}
         {h.label && <span className="label">{h.label}</span>}
         <h3>{h.titulo}</h3>
         {h.bajada && <p className="bajada">{h.bajada.texto}{h.bajada.isExample && <Badge />}</p>}
         <p>{h.resumen}</p>
+      </div>
+      {carousel}
+      <div className="copy copy-allies">
         {h.colaboradores && <AlliesBlock bloque={h.colaboradores} />}
         {h.nota && <p className="note">{h.nota}</p>}
         <div className="ig-row">
@@ -32,7 +31,6 @@ export function StoryPanel({ h, active, eager }: { h: Historia; active: boolean;
           {h.enlace.isExample && <Badge />}
         </div>
       </div>
-      {!narrow && carousel}
       {h.instituciones && <div className="inst-wide"><InstitutionsSlider {...h.instituciones} active={active} region={h.id} /></div>}
     </div>
   )
