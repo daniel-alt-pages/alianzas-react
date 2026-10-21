@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Badge } from './Badge'
 import type { Institucion } from '../data/historias'
 /** Prueba: tarjetas solo con logo. Poner en true para volver a mostrar nombre y municipio. */
@@ -17,8 +18,9 @@ function Card({ s, j, dup }: { s: Institucion; j: number; dup?: boolean }) {
   )
 }
 export function InstitutionsSlider({ titulo, items, isPlaceholder, active }: Props) {
+  const [paused, setPaused] = useState(false)
   return (
-    <div className="inst" data-placeholder={isPlaceholder || undefined} data-active={active || undefined}>
+    <div className="inst" data-placeholder={isPlaceholder || undefined} data-active={active || undefined} data-paused={paused || undefined}>
       <h4 id={`inst-${titulo.replace(/\W+/g, '-')}`}>{titulo}</h4>
       <ul className="sr" aria-label={titulo}>{items.map(s => <li key={s.nombre}>{s.nombre}{s.municipio ? `, ${s.municipio}` : ''}</li>)}</ul>
       <div className="inst-view marquee">
@@ -27,6 +29,10 @@ export function InstitutionsSlider({ titulo, items, isPlaceholder, active }: Pro
           {items.map((s, j) => <Card key={`d${j}`} s={s} j={j} dup />)}
         </ul>
       </div>
+      <button type="button" className="inst-pause" aria-label={paused ? 'Reanudar cinta' : 'Pausar cinta'} onClick={() => setPaused(p => !p)}>
+        {paused ? <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5v14l12-7z" /></svg>
+          : <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z" /></svg>}
+      </button>
     </div>
   )
 }

@@ -231,3 +231,15 @@ html,body,#root,main,.alianzas,.panels,.panel,.tabs,.bar,.inst-view{background-c
  .marquee .inst-row{width:auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,140px),1fr));gap:var(--gap)}
  .marquee .inst-card{width:auto}
 }
+
+/* Pausa discreta de la cinta */
+.marquee{position:relative}
+.inst-wide .inst{position:relative}
+.inst-pause{position:absolute;right:0;bottom:0;width:44px;height:44px;padding:0;border:0;background:none;display:grid;place-items:center;cursor:pointer;color:#475569;z-index:2}
+.inst-pause::before{content:"";position:absolute;width:32px;height:32px;border-radius:999px;background:#fff;border:1px solid #E6E6E6;box-shadow:0 1px 3px rgba(26,26,26,.08)}
+.inst-pause svg{position:relative}
+.inst-pause:hover{color:#1A1A1A}
+.inst-pause:focus-visible{outline:none}
+.inst-pause:focus-visible::before{outline:3px solid var(--red);outline-offset:2px}
+.inst[data-paused] .marquee .inst-row{animation-play-state:paused!important}
+@media(prefers-reduced-motion:reduce){.inst-pause{display:none}}
