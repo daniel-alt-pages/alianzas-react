@@ -317,3 +317,12 @@ a.ally-only-logo .ally-logo.ally-logo-lg img{width:92%;max-width:335px;height:au
 .ally-logo img[src$="preicfes-jovenes-bogota.webp"]{height:64px;width:64px}
 @media(min-width:1024px){.ally-logo img[src$="preicfes-jovenes-bogota.webp"]{height:76px;width:76px}}
 a.ally-only-logo{padding-left:12px;padding-right:12px}
+/* PreICFES solo logo, cuadrado */
+a.ally-only-logo .ally-logo.ally-logo-lg img[src$="preicfes-jovenes-bogota.webp"]{width:auto;height:110px;max-width:100%}
+@media(min-width:1024px){a.ally-only-logo .ally-logo.ally-logo-lg img[src$="preicfes-jovenes-bogota.webp"]{height:100px}}
+/* Móvil: tarjetas de aliados (solo logo) con la misma altura y logos centrados */
+@media(max-width:767px){
+ .allies .ally-only-logo{height:132px;display:flex;align-items:center;justify-content:center;padding-left:12px;padding-right:12px}
+ .allies .ally-only-logo .ally-logo.ally-logo-lg{width:100%;display:flex;justify-content:center;align-items:center}
+ .allies button.ally-only-logo .ally-logo.ally-logo-lg img{width:88%;max-width:100%;height:auto}
+}
