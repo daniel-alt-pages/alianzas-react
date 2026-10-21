@@ -33,7 +33,7 @@ export function StoryPanel({ h, active, eager }: { h: Historia; active: boolean;
         </div>
       </div>
       {!narrow && carousel}
-      {h.instituciones && <div className="inst-wide"><InstitutionsSlider {...h.instituciones} active={active} /></div>}
+      {h.instituciones && <div className="inst-wide"><InstitutionsSlider {...h.instituciones} active={active} region={h.id} /></div>}
     </div>
   )
 }

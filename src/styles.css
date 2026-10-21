@@ -205,7 +205,7 @@ html,body,#root,main,.alianzas,.panels,.panel,.tabs,.bar,.inst-view{background-c
 .marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent)}
 .marquee .inst-row{list-style:none;margin:0;padding:4px 0;display:flex;gap:var(--gap);width:max-content;transform:none;transition:none;animation:marquee var(--dur) linear infinite;animation-play-state:paused}
 .inst[data-active] .marquee .inst-row{animation-play-state:running}
-.inst[data-active] .marquee:hover .inst-row,.inst[data-active] .marquee:focus-within .inst-row{animation-play-state:paused}
+.inst[data-active] .marquee:focus-visible .inst-row,.inst[data-active] .marquee:has(:focus-visible) .inst-row{animation-play-state:paused}@media(hover:hover){.inst[data-active] .marquee:hover .inst-row{animation-play-state:paused}}
 .marquee .inst-row>li{margin:0}
 @keyframes marquee{to{transform:translateX(calc(-50% - var(--gap) / 2))}}
 .inst-card{position:relative;overflow:hidden}
@@ -265,3 +265,23 @@ button.ally:focus-visible{outline:3px solid var(--red);outline-offset:3px;box-sh
 .ally-logo.ally-logo-lg{flex:0 1 auto;width:auto;max-width:100%;height:auto}
 .ally-logo.ally-logo-lg img{height:auto;width:min(100%,270px);max-width:100%}
 @media(min-width:1024px){.ally-logo.ally-logo-lg img{width:min(100%,220px);max-width:100%;height:auto}}
+/* Tarjetas con giro 3D */
+.marquee .inst-row>li.inst-cell{flex:0 0 var(--cw);width:var(--cw);perspective:900px}
+.inst-flip{display:block;width:100%;height:100%;padding:0;border:0;background:none;font:inherit;color:inherit;text-align:center;cursor:pointer;border-radius:16px}
+.inst-flip:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+.inst-flip-in{position:relative;display:grid;height:100%;transform-style:preserve-3d;transition:transform .4s var(--ease-out)}
+.inst-flip[data-flipped] .inst-flip-in{transform:rotateY(180deg)}
+.inst-face{grid-area:1/1;width:100%!important;height:100%;-webkit-backface-visibility:hidden;backface-visibility:hidden}
+.inst-back{transform:rotateY(180deg);justify-content:center;gap:8px;padding:16px 12px}
+.inst-back::after{display:none}
+.inst-card .inst-back-name{font-family:var(--fh);font-weight:700;font-size:1rem;line-height:1.25;color:#1A1A1A;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;min-height:0}
+.inst-card .inst-back-loc{font-size:1rem;color:#475569}
+.inst[data-hold] .marquee .inst-row{animation-play-state:paused!important}
+@media(prefers-reduced-motion:reduce){
+ .marquee .inst-row>li.inst-cell{width:auto;perspective:none}
+ .inst-flip-in{transform:none!important;transition:none}
+ .inst-face{-webkit-backface-visibility:visible;backface-visibility:visible;transition:opacity .2s ease}
+ .inst-back{transform:none;opacity:0}
+ .inst-flip[data-flipped] .inst-back{opacity:1}
+ .inst-flip[data-flipped] .inst-front{opacity:0}
+}
