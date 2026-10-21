@@ -108,3 +108,4 @@ a.ally:hover strong{text-decoration:underline}
 .ally-logo{display:inline-flex}
 .ally-logo .a-logo{max-width:100%}
 @media (min-width:1024px){.a-group{padding:16px 24px}.a-group-list{flex-wrap:nowrap}}
+.a-list>li:not([data-haslogo]){grid-column:1/-1}
