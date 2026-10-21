@@ -9,7 +9,6 @@ Actualizado: 21 de octubre de 2026. Fuente del contenido: `src/data/historias.ts
 | Cifras (bajada bajo el título) | Frase de ejemplo: "Una cohorte, todo un calendario, una misma meta" | La cifra real de estudiantes |
 | Cinta de instituciones | "Colegio aliado Bogotá 1 a 4 (ejemplo)" con logos de iniciales (`public/ejemplos/colegio-aliado-bogota-1…4.svg`) | Los nombres reales de los cuatro colegios y sus logos |
 | Aliados | Logo de ejemplo de PreICFES Jóvenes Bogotá (`public/ejemplos/preicfes-jovenes-bogota.svg`) | El logo oficial |
-| Enlace de Instagram | Perfil `@preicfesjovenesbogota`, marcado como ejemplo | La URL de la publicación real |
 | Fotos | 4 fotos reales | Nada |
 
 ## Soacha
@@ -35,3 +34,7 @@ Sigue guardada sin tocar en el commit `f947545`. No está publicada.
 ## Limpieza opcional
 
 `public/aliados/alcaldia-soacha.webp` ya no se usa en ninguna parte.
+
+## Resuelto (2026-10-21)
+- Bogotá: enlace de Instagram ahora apunta a la publicación real https://www.instagram.com/p/Ddtyy4PkRYs/.
+- Soacha: logo oficial de la Universidad Distrital (fuente: https://ritaprod.udistrital.edu.co/themes/RITA/images/logoud-negro.png), solo logo, enlaza a https://www.instagram.com/p/DdsJ41FiSYO/.

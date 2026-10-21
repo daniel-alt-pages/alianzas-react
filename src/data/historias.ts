@@ -49,7 +49,7 @@ export const historias: Historia[] = [
       logoIsExample: true, isExample: true, sinNombreReal: true,
     })) },
     // EJEMPLO: URL del perfil, no de la publicación; reemplazar por la publicación real
-    enlace: { texto: 'Publicación PreICFES Gratuito Jóvenes Bogotá (ejemplo)', href: 'https://www.instagram.com/preicfesjovenesbogota/', isExample: true },
+    enlace: { texto: 'Ver en Instagram', href: 'https://www.instagram.com/p/Ddtyy4PkRYs/' },
     imagenes: [
       real('historias/jovenes-bogota-1.webp', 'Collage: SEAMOSGENIOS y el PreICFES Gratuito Jóvenes Bogotá, una alianza estratégica por el acceso a la educación superior en Colombia'),
       real('historias/jovenes-bogota-2.webp', 'Collage: estudiantes de la cohorte Jóvenes Bogotá con camisetas del programa en el colegio'),
