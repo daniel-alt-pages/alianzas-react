@@ -1,25 +1,17 @@
 import { Badge } from './Badge'
 import type { BloqueColaboradores, Colaborador } from '../data/historias'
-function Mark({ c }: { c: Colaborador }) {
-  if (!c.logo) return null
-  return <span className="ally-logo" data-wide={c.logo.width / c.logo.height > 2.5 || undefined} data-example={c.logo.isExample || undefined}><img src={c.logo.src} alt={c.logo.alt} width={c.logo.width} height={c.logo.height} loading="lazy" decoding="async" /></span>
+function Ally({ c }: { c: Colaborador }) {
+  const body = <>{c.logo && <img className="a-logo" src={c.logo.src} alt={c.logo.alt} width={c.logo.width} height={c.logo.height} loading="lazy" decoding="async" />}
+    <span className="a-txt"><strong>{c.nombre}</strong>{c.rol && <span>{c.rol}</span>}{c.logo?.isExample && <Badge />}</span></>
+  return c.url
+    ? <a className="ally" href={c.url} target="_blank" rel="noopener" aria-label={`${c.nombre}${c.logo?.isExample ? ' (logo de ejemplo)' : ''}${c.handle ? `, @${c.handle} en Instagram` : ''} (abre en una pestaña nueva)`}>{body}</a>
+    : <div className="ally">{body}</div>
 }
 export function AlliesBlock({ bloque }: { bloque: BloqueColaboradores }) {
   return (
-    <div className="allies">
-      <h4>{bloque.titulo}</h4>
-      <ul>
-        {bloque.items.map((c, k) => {
-          const body = <><Mark c={c} /><span className="ally-txt"><strong>{c.nombre}</strong>{c.rol && <span className="ally-rol">{c.rol}</span>}{c.logo?.isExample && <Badge />}{c.handle && <span className="ally-handle">@{c.handle} <span aria-hidden="true">↗</span></span>}</span></>
-          return (
-            <li key={k} className={c.isPlaceholder ? 'ph' : undefined}>
-              {c.url
-                ? <a className="ally" href={c.url} target="_blank" rel="noopener" aria-label={`${c.nombre}${c.logo?.isExample ? ' (logo de ejemplo)' : ''}, @${c.handle} en Instagram (se abre en una pestaña nueva)`}>{body}</a>
-                : <div className="ally">{body}</div>}
-            </li>
-          )
-        })}
-      </ul>
+    <div className="allies wrap">
+      <h3 className="sec-title">{bloque.titulo}</h3>
+      <ul className="a-list">{bloque.items.map((c, k) => <li key={k} data-haslogo={!!c.logo || undefined}><Ally c={c} /></li>)}</ul>
     </div>
   )
 }

@@ -32,7 +32,7 @@ export interface Historia {
 
 export const historias: Historia[] = [
   {
-    id: 'bogota', tab: 'Jóvenes Bogotá',
+    id: 'bogota', tab: 'Bogotá',
     titulo: 'PreICFES Gratuito Jóvenes Bogotá',
     // EJEMPLO: sin cifra verificada; línea descriptiva no numérica
     bajada: { texto: 'Una cohorte, todo un calendario, una misma meta', isExample: true },
