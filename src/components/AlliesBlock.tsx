@@ -1,3 +1,4 @@
+import { Badge } from './Badge'
 import type { BloqueColaboradores, Colaborador } from '../data/historias'
 function Mark({ c }: { c: Colaborador }) {
   if (!c.logo) return null
@@ -9,11 +10,11 @@ export function AlliesBlock({ bloque }: { bloque: BloqueColaboradores }) {
       <h4>{bloque.titulo}</h4>
       <ul>
         {bloque.items.map((c, k) => {
-          const body = <><Mark c={c} /><span className="ally-txt"><strong>{c.nombre}</strong>{c.rol && <span className="ally-rol">{c.rol}</span>}{c.logo?.isExample && <span className="tag-ej">Ejemplo</span>}{c.handle && <span className="ally-handle">@{c.handle} <span aria-hidden="true">↗</span></span>}</span></>
+          const body = <><Mark c={c} /><span className="ally-txt"><strong>{c.nombre}</strong>{c.rol && <span className="ally-rol">{c.rol}</span>}{c.logo?.isExample && <Badge />}{c.handle && <span className="ally-handle">@{c.handle} <span aria-hidden="true">↗</span></span>}</span></>
           return (
             <li key={k} className={c.isPlaceholder ? 'ph' : undefined}>
               {c.url
-                ? <a className="ally" href={c.url} target="_blank" rel="noopener" aria-label={`${c.nombre}, @${c.handle} en Instagram (se abre en una pestaña nueva)`}>{body}</a>
+                ? <a className="ally" href={c.url} target="_blank" rel="noopener" aria-label={`${c.nombre}${c.logo?.isExample ? ' (logo de ejemplo)' : ''}, @${c.handle} en Instagram (se abre en una pestaña nueva)`}>{body}</a>
                 : <div className="ally">{body}</div>}
             </li>
           )

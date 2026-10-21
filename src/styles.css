@@ -36,7 +36,7 @@ h2 .accent{display:block;color:var(--red)}
 .panel{grid-area:1/1;display:grid;gap:clamp(24px,4vw,56px);align-items:start}
 .panel[hidden]{display:none}
 .panel{align-content:start}
-@media(max-width:879px){.panel .carousel{order:-1}}
+
 @media(min-width:880px){.panel{grid-template-columns:5fr 7fr}}
 .panel.enter .copy>*{animation:rise .26s var(--ease-out) backwards}
 .panel.enter .copy>*:nth-child(2){animation-delay:40ms}.panel.enter .copy>*:nth-child(3){animation-delay:80ms}
@@ -187,7 +187,7 @@ a.ally:hover .ally-handle{text-decoration:underline;text-underline-offset:3px}
 .inst-logo{display:grid;place-items:center;height:clamp(88px,6vw + 70px,120px);width:100%}
 .inst-logo img{height:100%;width:100%;max-width:100%;object-fit:contain;border-radius:0;background:none;flex:none}
 .inst-card strong{font-family:var(--fh);font-weight:700;font-size:1rem;line-height:1.25;color:#1A1A1A;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;min-height:3.75em}
-.inst-card .inst-mun{margin-top:auto;font-size:1rem;color:#6B6B6B}
+.inst-card .inst-mun{margin-top:auto;font-size:1rem;color:#475569}
 .inst-card .tag-ej{margin:0;display:inline-block}
 .alianzas[data-tema="azul"] .inst-card{background:#fff;border-color:#E6E6E6}
 .inst-prog,.inst-bar{max-width:none}
@@ -224,3 +224,10 @@ html,body,#root,main,.alianzas,.panels,.panel,.tabs,.bar,.inst-view{background-c
 .ally-logo[data-wide] img{height:40px;max-width:min(100%,240px)}
 @media(max-width:559px){.ally{flex-direction:column;align-items:flex-start;gap:8px;padding:12px 14px}}
 @media(min-width:1024px){.ally-logo img{height:68px;max-width:160px}.ally-logo[data-wide] img{height:52px;max-width:200px}}
+
+/* Reduced motion: la cinta se vuelve una cuadrícula que se acomoda */
+@media(prefers-reduced-motion:reduce){
+ .marquee{overflow:visible}
+ .marquee .inst-row{width:auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,140px),1fr));gap:var(--gap)}
+ .marquee .inst-card{width:auto}
+}

@@ -1,3 +1,4 @@
+import { Badge } from './Badge'
 import type { Institucion } from '../data/historias'
 /** Prueba: tarjetas solo con logo. Poner en true para volver a mostrar nombre y municipio. */
 export const SHOW_INST_NAMES = false
@@ -9,7 +10,7 @@ function Card({ s, j, dup }: { s: Institucion; j: number; dup?: boolean }) {
     <li className={`inst-card${SHOW_INST_NAMES ? '' : ' logo-only'}`} aria-hidden={dup || undefined} style={{ ['--k' as string]: j % 6 }}>
       <span className="inst-logo">{s.logo && <img src={s.logo} alt={dup || SHOW_INST_NAMES ? '' : s.nombre} width={160} height={120} loading="lazy" decoding="async" />}</span>
       {SHOW_INST_NAMES && <strong>{s.nombre}</strong>}
-      {(s.isExample || s.logoIsExample) && <span className="tag-ej">{s.isExample ? 'Ejemplo' : 'Logo de ejemplo'}</span>}
+      {(s.isExample || s.logoIsExample) && <Badge>{s.isExample ? 'Ejemplo' : 'Logo de ejemplo'}</Badge>}
       {SHOW_INST_NAMES && s.municipio && <span className="inst-mun">{s.municipio}</span>}
       {!SHOW_INST_NAMES && !s.logo && <span className="sr">{s.nombre}</span>}
     </li>
